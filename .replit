@@ -1,6 +1,6 @@
-run = "set -e; csc Main.cs; mono Main.exe"
+run = "csc Main.cs; mono Main.exe"
 
-hidden = ["bin", "obj"]
+hidden = ["bin", "obj", "Main.exe"]
 
 [env]
 DOTNET_NOLOGO = "1"
