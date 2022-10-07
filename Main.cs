@@ -1,12 +1,17 @@
 using System;
 using System.Linq;
 public class Program {
-  public static void Main () {
-    int[] estrada = Console.ReadLine().Split().Select(int.Parse).ToArray();
-    int[] custos = Console.ReadLine().Split().Select(int.Parse).ToArray();
-    int custo_km = estrada[0] * custos[0];
-    int custo_pedagio = estrada[0] / estrada[1] * custos[1];
-    int custo_total = custo_km + custo_pedagio;
-    Console.WriteLine($"{custo_total}");
+  public static void Main() {
+    double[] abc = Console.ReadLine().Split().Select(double.Parse).ToArray();
+    string[] rot = {"TRIANGULO:", "CIRCULO:", "TRAPEZIO:", "QUADRADO:", "RETANGULO:"};
+    double[] ans = {0, 0, 0, 0, 0};
+    ans[0] = abc[0] * abc[2] / 2;
+    ans[1] = 3.14159 * Math.Pow(abc[2], 2);
+    ans[2] = (abc[0] + abc[1]) * abc[2] / 2;
+    ans[3] = Math.Pow(abc[1], 2);
+    ans[4] = abc[0] * abc[1];
+    for (int i = 0; i < ans.Length; i++) {
+      Console.WriteLine($"{rot[i]} {ans[i]:f3}");
+    }
   }
 }
