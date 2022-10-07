@@ -12,8 +12,3 @@ public class Program {
     Console.WriteLine($"TOTAL = R$ {m:f2}");
   }
 }
-/*
-JOAO
-500.00
-1230.30
-*/
