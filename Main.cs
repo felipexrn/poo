@@ -14,7 +14,7 @@ public class Program {
       for (int i = 0; i < v.Length; i++) {
         Console.WriteLine($"{v[i]}");
       }
-      Console.WriteLine("\n");
+      Console.WriteLine();
       for (int i = 0; i < s.Length; i++) {
         Console.WriteLine($"{s[i]}");
       }
