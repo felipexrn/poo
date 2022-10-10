@@ -25,25 +25,21 @@ public class Program {
         menor = v[1];
       }
       if (v[2] < menor) {
-        menor = v[2]
+        menor = v[2];
       }
       int maior = v[0];
       if (v[1] > maior) {
         maior = v[1];
       }
       if (v[2] > maior) {
-        maior = v[2]
+        maior = v[2];
       }
       int medio = v[0];
-      if (medio >= menor && medio <= maior) {
-        medio = v[0];
-      }
-      medio = v[1];
-      if (medio >= menor && medio <= maior) {
+      if (medio > menor && medio < maior) {
         medio = v[1];
       }
       medio = v[2];
-      if (medio >= menor && medio <= maior) {
+      if (medio > menor && medio < maior) {
         medio = v[2];
       }
       Console.WriteLine($"{menor}");
