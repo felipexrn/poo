@@ -34,14 +34,7 @@ public class Program {
       if (v[2] > maior) {
         maior = v[2];
       }
-      int medio = v[0];
-      if (medio > menor && medio < maior) {
-        medio = v[1];
-      }
-      medio = v[2];
-      if (medio > menor && medio < maior) {
-        medio = v[2];
-      }
+      int medio = v[0] + v[1] + v[2] - maior - menor;
       Console.WriteLine($"{menor}");
       Console.WriteLine($"{medio}");
       Console.WriteLine($"{maior}");
