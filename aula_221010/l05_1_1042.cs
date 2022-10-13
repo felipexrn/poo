@@ -18,7 +18,7 @@ public class Program {
       for (int i = 0; i < s.Length; i++) {
         Console.WriteLine($"{s[i]}");
       }
-    } else if (alg ==1) {
+    } else if (alg == 1) {
       int[] v = Console.ReadLine().Split().Select(int.Parse).ToArray();
       int menor = v[0];
       if (v[1] < menor) {
