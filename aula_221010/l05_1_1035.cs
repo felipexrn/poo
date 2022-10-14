@@ -2,16 +2,17 @@ using System;
 using System.Linq;
 public class Program{
   public static void Main() {
-    int[] v = Console.ReadLine().Split().Select(int.Parse).ToArray();
-    if ((v[1] > v[2]) &&
-        (v[3] > v[0]) &&
-        (v[2] + v[3] > v[0] + v[1]) &&
-        v[2] > 0 &&
-        v[3] > 0 &&
-        v[0] % 2 == 0) {
-      Console.WriteLine("Valores aceitos");
-    } else {
-      Console.WriteLine("Valores nao aceitos");
-    } 
+    string[] respostas = {"azar", "azar", "azar", "terno", "quadra", "quina", "sena"};
+    int[] aposta = Console.ReadLine().Split().Select(int.Parse).ToArray();
+    int[] resultados = Console.ReadLine().Split().Select(int.Parse).ToArray();
+    int acertos = 0;
+    for (int i = 0; i < aposta.Length; i++) {
+      for (int j = 0; j < resultados.Length; j++) {
+        if (aposta[i] == resultados[j]) {
+          acertos++;
+        }
+      }
+    }
+    Console.WriteLine($"{respostas[acertos]}");
   }
 }
