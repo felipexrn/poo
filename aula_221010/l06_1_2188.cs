@@ -17,14 +17,18 @@ public class Program {
         int y2 = coordenadas[1];
         int u2 = coordenadas[2];
         int v2 = coordenadas[3];
-        if (Math.Max(x1, x2) <= Math.Min(u1, u2) && Math.Min(y1, y2) <= Math.Max(v1, v2)) {
-          x1 = Math.Max(x1, x2);
-          y1 = Math.Min(y1, y2);
-          u1 = Math.Min(u1, u2);
-          v1 = Math.Max(v1, v2);
+        int interX = Math.Max(x1, x2);
+        int interY = Math.Min(y1, y2);
+        int interU = Math.Min(u1, u2);
+        int interV = Math.Max(v1, v2); 
+        if ( interX <= interU && interY >= interV) {
+          x1 = interX;
+          y1 = interY;
+          u1 = interU;
+          v1 = interV;
         } else {
-          temIntersec = false;
-        }
+            temIntersec = false;
+          }
       }      
       Console.WriteLine($"Teste {contador}");
       contador++;
