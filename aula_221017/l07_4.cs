@@ -5,11 +5,8 @@ public class Program{
     bool EDivisorComum = false;
     int Mmc = Math.Max(x, y);
     while(! EDivisorComum) {
-      if (Mmc % x > 0 || Mmc % y > 0) {
-        Mmc++;      
-      } else {
-        EDivisorComum = true;
-      }
+      if (Mmc % x > 0 || Mmc % y > 0) Mmc++;      
+      else EDivisorComum = true;
     }
     return Mmc;  
   }
