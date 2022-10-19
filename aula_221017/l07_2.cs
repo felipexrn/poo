@@ -30,6 +30,7 @@ public class Program {
     Console.WriteLine();
   }
   public static void Main() {
+    Console.WriteLine("Escreva três números na mesma linha e veja eles em ordem crescente");
     int[] valores = Console.ReadLine().Split().Select(int.Parse).ToArray();
     Ordenar(ref valores[0], ref valores[1], ref valores[2]);
     Print(valores);
