@@ -3,10 +3,14 @@ using System.Linq;
 public class Program {
   public static string FormatarTexto(string texto) {
     string TextoFormatado = "";
-    for (int i = 0; i < texto.Length; i++) {
-      if(texto[i] != ' ') {
-        TextoFormatado += texto[i];
+    char CaracterAnterior = texto[0];
+    TextoFormatado += CaracterAnterior;
+    int t = texto.Length;
+    for (int i = 1; i < t; i++) {
+      if(! (CaracterAnterior == ' ' && texto[i] == ' ')) {
+        TextoFormatado += texto[i]; 
       }
+      CaracterAnterior = texto[i];
     }
     return TextoFormatado;
   }
