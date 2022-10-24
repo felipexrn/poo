@@ -1,7 +1,7 @@
 using System;
 
 public class Circulo {
-  public int Raio;
+  public double Raio;
   public double Area() {
     return Math.PI * Math.Pow(Raio, 2);
   }
@@ -14,7 +14,8 @@ public class Circulo {
 public class Program {
   public static void Main () {
     Circulo c = new Circulo();
-    c.Raio = 1;
+    Console. WriteLine("Digite o valor do raio do cículo e veja a área e perímetro do mesmo.");
+    c.Raio = double.Parse(Console.ReadLine());
     Console.WriteLine($"Raio = {c.Raio}");
     Console.WriteLine($"Área = {c.Area()}");
     Console.WriteLine($"Perímetro = {c.Perimetro()}");
