@@ -14,31 +14,31 @@ public class Disciplina {
     return Nome;
   }
   public void SetNota1(int Valor) {
-    if (Valor >= 0) Nota1 = Valor;
+    if (Valor >= 0 && Valor <= 100) Nota1 = Valor;
   }
   public int GetNota1() {
     return Nota1;
   }
   public void SetNota2(int Valor) {
-    if (Valor >= 0) Nota2 = Valor;
+    if (Valor >= 0 && Valor <= 100) Nota2 = Valor;
   }
   public int GetNota2() {
     return Nota2;
   }
   public void SetNota3(int Valor) {
-    if (Valor >= 0) Nota3 = Valor;
+    if (Valor >= 0 && Valor <= 100) Nota3 = Valor;
   }
   public int GetNota3() {
     return Nota3;
   }
   public void SetNota4(int Valor) {
-    if (Valor >= 0) Nota4 = Valor;
+    if (Valor >= 0 && Valor <= 100) Nota4 = Valor;
   }
   public int GetNota4() {
     return Nota4;
   }
   public void SetProvaFinal(int Valor) {
-    if (Valor >= 0) ProvaFinal = Valor;
+    if (Valor >= 0 && Valor <= 100) ProvaFinal = Valor;
   }
   public int GetProvaFinal() {
     return ProvaFinal;
