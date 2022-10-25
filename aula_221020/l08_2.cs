@@ -1,17 +1,17 @@
 using System;
 using System.Linq;
-public class Curso {
-  private string Disciplina = "não declarada";
+public class Disciplina {
+  private string Nome = "não declarado";
   private int Nota1;
   private int Nota2;
   private int Nota3;
   private int Nota4;
   private int ProvaFinal;
-  public void SetDisciplina(string Texto) {
-    if (string.IsNullOrEmpty(Texto) == false) Disciplina = Texto;
+  public void SetNome(string Texto) {
+    if (string.IsNullOrEmpty(Texto) == false) Nome = Texto;
   }
-  public string GetDisciplina() {
-    return Disciplina;
+  public string GetNome() {
+    return Nome;
   }
   public void SetNota1(int Valor) {
     if (Valor >= 0) Nota1 = Valor;
@@ -52,14 +52,23 @@ public class Curso {
 }
 public class Program {
   public static void Main () {
-    Curso CursoA = new Curso();
-    Console.WriteLine("Digite o nome da disciplina. Se vazio, Disciplina = não declarada.");
-    CursoA.SetDisciplina(Console.ReadLine());
+    Disciplina CursoA = new Disciplina();
+    Console.WriteLine("Digite o nome da disciplina. Se vazio, Nome = não declarado.");
+    CursoA.SetNome(Console.ReadLine());
     Console.WriteLine("Digite em uma única linha as 4 notas da disciplina (de 0 a 100) separadas por espaço. Se vazio ou se os valores forem inválidos, as notas = 0.");
     string Entrada = Console.ReadLine();
     int NotaParcial = 0, NotaFinal = 0;
     if (string.IsNullOrEmpty(Entrada) == false) {
-      int[] Notas = Entrada.Split().Select(int.Parse).ToArray();
+      string[] Valores = Entrada.Split(' ');
+      int[] Notas = new int[4];
+      for (int i = 0; i < Valores.Length; i++) {
+        int A = 0;
+        if (int.TryParse(Valores[i], out A)) {
+          Notas[i] = A;
+        } else {
+          Notas[i] = 0;
+        }
+      }
       CursoA.SetNota1(Notas[0]);
       CursoA.SetNota2(Notas[1]);
       CursoA.SetNota3(Notas[2]);
@@ -77,6 +86,6 @@ public class Program {
     } else {
       NotaFinal = NotaParcial;
     }
-    Console.WriteLine($"Disciplina: {CursoA.GetDisciplina()}\nNota 1 = {CursoA.GetNota1()}\nNota 2 = {CursoA.GetNota2()}\nNota 3 = {CursoA.GetNota3()}\nNota 4 = {CursoA.GetNota4()}\nProva Final = {CursoA.GetProvaFinal()}\nMédia Parcial = {NotaParcial}\nMédia Final = {NotaFinal}");
+    Console.WriteLine($"Disciplina: {CursoA.GetNome()}\nNota 1 = {CursoA.GetNota1()}\nNota 2 = {CursoA.GetNota2()}\nNota 3 = {CursoA.GetNota3()}\nNota 4 = {CursoA.GetNota4()}\nProva Final = {CursoA.GetProvaFinal()}\nMédia Parcial = {NotaParcial}\nMédia Final = {NotaFinal}");
   }
 }
