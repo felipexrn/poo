@@ -37,15 +37,20 @@ public class Equacao {
 }
 public class Program {
   public static void Main() {
-    Equacao E2 = new Equacao();
-    Console.WriteLine($"E2\n{E2.ToString()}");
-    Equacao E1 = new Equacao(1, 1 ,1);
     double R1 = 0;
     double R2 = 0;
+    Equacao E1 = new Equacao(1, 2 ,1);
+    Console.WriteLine($"E1\n{E1.ToString()}");
     if (E1.RaizesReais(out R1, out R2)) {
       Console.WriteLine($"Raizes de E1 = {R1}, {R2}");
     }
     else Console.WriteLine("E1 não tem Raizes reais");
+    Equacao E2 = new Equacao();
+    
+    E2.SetABC(4, -2, 0);
+    double A = 0, B = 0, C = 0;
+    E2.GetABC(out A, out B, out C);
+    Console.WriteLine($"A = {A}\nB = {B}\nC = {C}");
   }
   
 }
