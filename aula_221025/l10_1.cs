@@ -1,7 +1,7 @@
 using System;
 public class Retangulo {
-  private double b;
-  private double h;
+  private double b = 1.0;
+  private double h = 1.0;
   public Retangulo() {}
   public Retangulo(double b, double h) {
     if (b > 0) this.b = b;
