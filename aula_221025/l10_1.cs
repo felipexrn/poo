@@ -13,11 +13,21 @@ public class Retangulo {
   public void SetAltura(double h) {
     if (h > 0) this.h = h;
   }
-  public double GetBase() return b;
-  public double GetAltura() return h;
-  public double CalcArea() return b * h;
-  public double CalcDiagonal() return Math.Sqrt(b * b + h * h);
-  public override string ToString() return $"Base = {b}\nAltura = {h}";
+  public double GetBase() {
+    return b;
+  }
+  public double GetAltura() {
+    return h;
+  }
+  public double CalcArea() {
+    return b * h;
+  }
+  public double CalcDiagonal() {
+    return Math.Sqrt(b * b + h * h);
+  }
+  public override string ToString() {
+    return $"Base = {b}\nAltura = {h}";
+  }
 }
 public class Program {
   public static void Main() {
@@ -27,7 +37,7 @@ public class Program {
     r1.SetBase(-1);
     r1.SetAltura(-1);
     Console.WriteLine($"r1\nBase = {r1.GetBase()}\nAltura = {r1.GetAltura()}");
-    Console.WriteLine($"r2\nBase = {r2.GetBase()}\nAltura = {r2.GetAltura()}");
-    Console.WriteLine($"r1\nBase = {r1.GetBase()}\nAltura = {r1.GetAltura()}");
+    Console.WriteLine($"r2\n{r2.ToString()}");
+    Console.WriteLine($"r3\nArea = {r3.CalcArea()}\nDiagonal = {r3.CalcDiagonal()}");
   }
 }
