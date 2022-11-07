@@ -29,11 +29,11 @@ public class Frete {
 public class Program {
   public static void Main() {
     Frete F1 = new Frete(1, 1);
-    Console.WriteLine(F1.CalcFrete());
-    Console.WriteLine(F1.ToString());
+    Console.WriteLine($"F1\n{F1.ToString()}");
+    Console.WriteLine($"Frete = {F1.CalcFrete()}");
     Frete F2 = new Frete();
     F2.SetDistancia(2);
     F2.SetPeso(1.5);
-    Console.WriteLine($"Distância = {F2.GetDistancia()}\nPeso = {F2.GetPeso()}");
+    Console.WriteLine($"F2\nFrete = {F2.CalcFrete()}\nDistância = {F2.GetDistancia()}\nPeso = {F2.GetPeso()}");
   }
 }
