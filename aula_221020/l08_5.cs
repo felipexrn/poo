@@ -20,7 +20,20 @@ public class SessaoCinema {
     int Dia = int.Parse(Valores[0]);
     int Mes = int.Parse(Valores[1]);
     int Ano = int.Parse(Valores[2]);
-    Semana = (Dia + 2 * Mes + (3 * (Mes + 1) / 5) + Ano + Ano / 4 - Ano / 100 + Ano / 400 + 2) % 7;
+    if (Mes == 1) {
+      Mes = 13;
+      Ano = Ano - 1;
+    }
+    if (Mes == 2) {
+      Mes = 14;
+      Ano = Ano - 1;
+    }
+    int q = Dia;
+    int m = Mes;
+    int k = Ano % 100;
+    int j = Ano / 100;
+    int h = q + 13 * (m + 1) / 5 + k + k / 4 + j / 4 + 5 * j;
+    Semana = h % 7;
   }
   public string GetData() {
     return Data;
@@ -34,7 +47,7 @@ public class SessaoCinema {
       case 4: DiaSemana = "Quarta-feira"; break;
       case 5: DiaSemana = "Quinta-feira"; break;
       case 6: DiaSemana = "Sexta-feira"; break;
-      case 7: DiaSemana = "Sábado"; break;
+      case 0: DiaSemana = "Sábado"; break;
     }
     return DiaSemana;
   }
