@@ -1,0 +1,12 @@
+1. 
+a) 
+Memória Stack:
+x = endereço do objeto 'x' do tipo Triangulo em Heap
+Memória Heap:
+b = 10
+h = 20
+c = "Azul"
+
+b)
+Memória Stack:
+Memória Heap:
