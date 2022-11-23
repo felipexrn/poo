@@ -1,17 +1,17 @@
 using System;
 public class PecaDomino {
-  private int lado1 = 1;
-  private int lado2 = 1;
+  private int lado1 = 0;
+  private int lado2 = 0;
   public PecaDomino() {}
   public PecaDomino(int lado1, int lado2) {
-    if (lado1 > 0 && lado1 < 7) this.lado1 = lado1;
-    if (lado2 > 0 && lado2 < 7) this.lado2 = lado2;
+    if (lado1 >= 0 && lado1 <= 6) this.lado1 = lado1;
+    if (lado2 >= 0 && lado2 <= 6) this.lado2 = lado2;
   }
   public void SetLado1(int lado1) {
-    if (lado1 > 0 && lado1 < 7) this.lado1 = lado1;
+    if (lado1 >= 0 && lado1 <= 6) this.lado1 = lado1;
   }
   public void SetLado2(int lado2) {
-    if (lado2 > 0 && lado2 < 7) this.lado2 = lado2;
+    if (lado2 >= 0 && lado2 <= 6) this.lado2 = lado2;
   }
   public int GetLado1() {
     return lado1;

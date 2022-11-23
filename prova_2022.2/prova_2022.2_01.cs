@@ -2,7 +2,7 @@ using System;
 public class Pais {
   private string nome = "Não declarado";
   private int populacao = 0;
-  private double area = 0;
+  private double area = 1;
   public Pais() {}
   public Pais(string nome, int populacao) {
     if (nome != "") this.nome = nome;
