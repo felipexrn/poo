@@ -1,42 +1,52 @@
 using System;
-public class PecaDomino {
-  private int lado1 = 0;
-  private int lado2 = 0;
-  public PecaDomino() {}
-  public PecaDomino(int lado1, int lado2) {
-    if (lado1 >= 0 && lado1 <= 6) this.lado1 = lado1;
-    if (lado2 >= 0 && lado2 <= 6) this.lado2 = lado2;
+public class Pais {
+  private string nome = "Não declarado";
+  private int populacao = 0;
+  private double area = 1;
+  public Pais() {}
+  public Pais(string nome, int populacao, double area) {
+    if (nome != "") this.nome = nome;
+    if (populacao > 0) this.populacao = populacao;
+    if (area > 0) this.area = area;
   }
-  public void SetLado1(int lado1) {
-    if (lado1 >= 0 && lado1 <= 6) this.lado1 = lado1;
+  public void SetNome(string nome) {
+    if (nome != "") this.nome = nome;
   }
-  public void SetLado2(int lado2) {
-    if (lado2 >= 0 && lado2 <= 6) this.lado2 = lado2;
+  public void SetPopulacao(int populacao) {
+    if (populacao > 0) this.populacao = populacao;
   }
-  public int GetLado1() {
-    return lado1;
+  public void SetArea(double area) {
+    if (area > 0) this.area = area;
   }
-  public int GetLado2() {
-    return lado2;
+  public string GetNome() {
+    return nome;
   }
-  public bool Encaixa(PecaDomino peca) {
-    bool encaixa = false;
-    if (peca.lado1 == this.lado1 || peca.lado2 == this.lado2 || peca.lado2 == this.lado1 || peca.lado1 == this.lado2) encaixa = true;
-    return encaixa;
+  public int GetPopulacao() {
+    return populacao;
+  }
+  public double GetArea() {
+    return area;
+  }
+  public double Densidade() {
+    return populacao / area;
   }
   public override string ToString() {
-    return $"Lado 1 = {lado1}\nLado 2 = {lado2}";
+    return $"País = {nome}\nPopulação = {populacao}\nÁrea = {area}\nDensidade = {this.Densidade()}";
   }
 }
 public class Program {
   public static void Main() {
-    Console.WriteLine("Digite um por linha: lado 1 e lado 2 da peça 1.");
-    PecaDomino p1 = new PecaDomino(int.Parse(Console.ReadLine()),int.Parse(Console.ReadLine()));
-    Console.WriteLine("Digite um por linha: lado 1 e lado 2 da peça 2.");
-    PecaDomino p2 = new PecaDomino(int.Parse(Console.ReadLine()),int.Parse(Console.ReadLine()));
-    if (p1.Encaixa(p2)) Console.WriteLine("As peças combinam");
-    else Console.WriteLine("As peças não combinam");
-    Console.WriteLine(p1.ToString());
-    Console.WriteLine(p2.ToString());
+    double maiorDensidade = 0;
+    int indicePais = 0;
+    Pais[] paises = new Pais[10];
+    for (int i = 0; i < 10; i++) {
+      Console.WriteLine($"Digite um por linha: nome, população e área do país {i + 1}/10. Descubra qual deles tem maior densidade populacional.");
+      paises[i] = new Pais(Console.ReadLine(), int.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()));
+      if (paises[i].Densidade() > maiorDensidade) {
+        maiorDensidade = paises[i].Densidade();
+        indicePais = i;
+      }           
+    }
+    Console.WriteLine(paises[indicePais].ToString());
   }
 }

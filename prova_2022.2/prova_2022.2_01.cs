@@ -4,9 +4,10 @@ public class Pais {
   private int populacao = 0;
   private double area = 1;
   public Pais() {}
-  public Pais(string nome, int populacao) {
+  public Pais(string nome, int populacao, double area) {
     if (nome != "") this.nome = nome;
     if (populacao > 0) this.populacao = populacao;
+    if (area > 0) this.area = area;
   }
   public void SetNome(string nome) {
     if (nome != "") this.nome = nome;
@@ -40,8 +41,7 @@ public class Program {
     Pais[] paises = new Pais[10];
     for (int i = 0; i < 10; i++) {
       Console.WriteLine($"Digite um por linha: nome, população e área do país {i + 1}/10. Descubra qual deles tem maior densidade populacional.");
-      paises[i] = new Pais(Console.ReadLine(), int.Parse(Console.ReadLine()));
-      paises[i].SetArea(double.Parse(Console.ReadLine()));
+      paises[i] = new Pais(Console.ReadLine(), int.Parse(Console.ReadLine(), double.Parse(Console.ReadLine()));
       if (paises[i].Densidade() > maiorDensidade) {
         maiorDensidade = paises[i].Densidade();
         indicePais = i;
