@@ -2,11 +2,28 @@
 a) 
 Memória Stack:
 x = endereço do objeto 'x' do tipo Triangulo em Heap
+
 Memória Heap:
-b = 10
-h = 20
-c = "Azul"
+x:
+  b = 10
+  h = 20
+  c = "Azul"
 
 b)
-Memória Stack:
+Memória Stack
+x = endereço do objeto 'x' do tipo Triangulo em Heap
+y = endereço do objeto 'x' do tipo Triangulo em Heap
+z = endereço do objeto 'z' do tipo Triangulo em Heap
+bx = 0.0
+rx = 0.0
+cx = ""
+
 Memória Heap:
+x e y:
+  b = 10
+  h = 20
+  c = "Azul"
+z:
+  b = 0.0
+  h = 0.0
+  c = ""
