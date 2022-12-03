@@ -1,0 +1,20 @@
+Stack:
+a = referência para a em Heap
+b = referência para b em Heap
+c = referência para c em Heap
+
+Heap:
+nome = "a"
+idade = 20
+pai = referencia para b
+mae = referencia para c
+
+nome = "b"
+idade = 45
+pai = null
+mae = null
+
+nome = "c"
+idade = 45
+pai = null
+mae = null
