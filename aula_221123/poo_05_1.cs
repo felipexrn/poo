@@ -3,7 +3,7 @@ public class Paciente {
   private string nome = "Sem nome";
   private string cpf = "Não declarado";
   private string telefone = "Não declarado";
-  private DateTime nascimento;
+  private DateTime nascimento = DateTime.Now;
   public Paciente() {}
   public Paciente(string n, string c, string t, DateTime nasc) {
     this.SetNome(n);
@@ -21,7 +21,8 @@ public class Paciente {
     if(t != "") telefone = t;
   }
   public void SetNascimento(DateTime nasc) {
-    nascimento = nasc;
+    hoje = DateTime.Now;
+    if(nasc <= hoje) nascimento = nasc;
   }
   public string Idade() {
     DateTime hoje = DateTime.Now;
