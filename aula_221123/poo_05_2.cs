@@ -11,7 +11,7 @@ public class Premio {
   public void SetPremio(object p) {
     premio = p;
   }
-  public object GerPremio() {
+  public object GetPremio() {
     return premio;
   }
   public override string ToString() {
@@ -52,6 +52,6 @@ public class Program {
     Console.WriteLine(p);
     Produto v2 = new Produto("Camisa", 25);
     p.SetPremio(v2);
-    Console.WriteLine(p);
+    Console.WriteLine(p.GetPremio());
   }
 }
