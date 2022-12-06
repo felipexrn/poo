@@ -68,7 +68,9 @@ public class Boleto {
   }
 }
 public enum Pagamento {
-  EmAberto, PagoParcial, Pago
+  EmAberto,
+  PagoParcial,
+  Pago
 }
 public class Program {
   public static void Main() {
