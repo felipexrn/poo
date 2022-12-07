@@ -1,11 +1,15 @@
 using System;
+using System.Collections;
 public class Empresa {
+  private ContaPagar[] contas;
+  public ContaPagar[] Contas {set {contas = value;}}
   public string Nome {get; set;}
   private int i = 0;
-  public int Qtd {get; set;}
-  private ContaPagar[] contas = new ContaPagar[Qtd];
+  private int qtd;
+  public int Qtd {get {return qtd;}}
   public void Inserir(ContaPagar conta) {
     contas[this.i] = conta;
+    qtd++; 
     i++;
   }
   public ContaPagar[] Listar() {
@@ -49,14 +53,18 @@ public class ComparadorFornecedor : IComparer {
 } 
 public class Program {
   public static void Main() {
-    Empresa e1 = new Empresa {Qtd = 10, Nome = "Taberna Records"};
+    ContaPagar[] contas = new ContaPagar[3];
+    Empresa e1 = new Empresa {Nome = "Taberna Records", Contas = contas};
     ContaPagar c1 = new ContaPagar {Fornecedor = "Zorzal Produções", Vencimento = DateTime.Parse("2022-12-25"), Valor = 300};
     ContaPagar c2 = new ContaPagar {Fornecedor = "CDH Cast", Vencimento = DateTime.Parse("2022-12-11"), Valor = 600};
     ContaPagar c3 = new ContaPagar {Fornecedor = "Blueburry", Vencimento = DateTime.Parse("2022-12-03"), Valor = 59};
     e1.Inserir(c1);
     e1.Inserir(c2);
     e1.Inserir(c3);
-    e1.Listar();
-    Console.WriteLine(e1);
+    ContaPagar[] lista = e1.Listar();
+    foreach (ContaPagar conta in lista) {
+      Console.WriteLine($"{conta}\n");
+    }
+    
   }
 }
