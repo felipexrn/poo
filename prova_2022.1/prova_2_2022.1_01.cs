@@ -53,14 +53,16 @@ public class ComparadorFornecedor : IComparer {
 } 
 public class Program {
   public static void Main() {
-    ContaPagar[] contas = new ContaPagar[3];
+    ContaPagar[] contas = new ContaPagar[4];
     Empresa e1 = new Empresa {Nome = "Taberna Records", Contas = contas};
     ContaPagar c1 = new ContaPagar {Fornecedor = "Zorzal Produções", Vencimento = DateTime.Parse("2022-12-25"), Valor = 300};
     ContaPagar c2 = new ContaPagar {Fornecedor = "CDH Cast", Vencimento = DateTime.Parse("2022-12-11"), Valor = 600};
-    ContaPagar c3 = new ContaPagar {Fornecedor = "Blueburry", Vencimento = DateTime.Parse("2022-12-03"), Valor = 59};
+    ContaPagar c3 = new ContaPagar {Fornecedor = "New Blueburry", Vencimento = DateTime.Parse("2022-12-03"), Valor = 39};
+    ContaPagar c4 = new ContaPagar {Fornecedor = "Blueburry", Vencimento = DateTime.Parse("2022-12-03"), Valor = 60};
     e1.Inserir(c1);
     e1.Inserir(c2);
     e1.Inserir(c3);
+    e1.Inserir(c4);
     ContaPagar[] lista = e1.Listar();
     foreach (ContaPagar conta in lista) {
       Console.WriteLine($"{conta}\n");
