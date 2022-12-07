@@ -1,13 +1,17 @@
 using System;
 public class Empresa {
-  private ContaPagar[] contas;
   public string Nome {get; set;}
-  private int qtd = 10;
-  public int Qtd {get {return qtd;}}
+  private int i = 0;
+  public int Qtd {get; set;}
+  private ContaPagar[] contas = new ContaPagar[Qtd];
   public void Inserir(ContaPagar conta) {
-    contas[this.Qtd] = conta;
+    contas[this.i] = conta;
+    i++;
   }
   public ContaPagar[] Listar() {
+    ComparadorFornecedor objeto = new ComparadorFornecedor();
+    Array.Sort(contas, objeto);
+    Array.Sort(contas);
     return contas;
   }
   public ContaPagar[] Pesquisar(int mes, int ano) {
@@ -16,13 +20,19 @@ public class Empresa {
   public double Total(int mes, int ano) {
     return mes + ano;
   }
+  public override string ToString() {
+    return $"Contas: {this.contas}\n" +
+      $"Nome: {this.Nome}\n" +
+      $"Quantidade: {this.Qtd}";
+  } 
 }
 public class ContaPagar : IComparable {
   public string Fornecedor {get; set;}
   public DateTime Vencimento {get; set;}
   public double Valor {get; set;}
   public int CompareTo(object obj) {
-    return this.Vencimento.CompareTo(((ContaPagar) obj).Vencimento);
+    ContaPagar c2 = (ContaPagar) obj;
+    return this.Vencimento.CompareTo(c2.Vencimento);
   }
   public override string ToString() {
     return $"Fornecedor: {this.Fornecedor}\n" +
@@ -30,10 +40,23 @@ public class ContaPagar : IComparable {
       $"Valor: R$ {this.Valor:0.00}";
   } 
 }
+public class ComparadorFornecedor : IComparer {
+  public int Compare(object obj1, object obj2) {
+    ContaPagar c1 = (ContaPagar) obj1;
+    ContaPagar c2 = (ContaPagar) obj2;
+    return c1.Fornecedor.CompareTo(c2.Fornecedor);
+  }
+} 
 public class Program {
   public static void Main() {
-    Empresa e1 = new Empresa {Nome = "Taberna Records"};
+    Empresa e1 = new Empresa {Qtd = 10, Nome = "Taberna Records"};
     ContaPagar c1 = new ContaPagar {Fornecedor = "Zorzal Produções", Vencimento = DateTime.Parse("2022-12-25"), Valor = 300};
+    ContaPagar c2 = new ContaPagar {Fornecedor = "CDH Cast", Vencimento = DateTime.Parse("2022-12-11"), Valor = 600};
+    ContaPagar c3 = new ContaPagar {Fornecedor = "Blueburry", Vencimento = DateTime.Parse("2022-12-03"), Valor = 59};
     e1.Inserir(c1);
+    e1.Inserir(c2);
+    e1.Inserir(c3);
+    e1.Listar();
+    Console.WriteLine(e1);
   }
 }
