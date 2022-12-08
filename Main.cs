@@ -1,3 +1,7 @@
+// Neste documento você encontrará a resolução das 3 questões da 2ª prova de 2021.1
+
+// Resolução da questão 01, que valia 35 pontos:
+
 using System;
 using System.Collections;
 public class Empresa {
@@ -6,7 +10,7 @@ public class Empresa {
   public string Nome {get; set;}
   private int qtd;
   public int Qtd {get {return qtd;}}
-  private int t, i; // Não consegui usar i no while dentro do metodo Pesquisar
+  private int t;
   private double soma;
   public void Inserir(ContaPagar conta) {
     contas[this.qtd] = conta;
@@ -21,18 +25,12 @@ public class Empresa {
   public ContaPagar[] Pesquisar(int mes, int ano) {
     ContaPagar[] c1 = new ContaPagar[qtd];
     this.t = 0;
-    this.i = 0;
     foreach (ContaPagar conta in contas) {
       if (conta.Vencimento.Month == mes && conta.Vencimento.Year == ano) {
         c1[this.t] = conta;
         this.t++;
       }
-    }// Não consegui usar o while nesse método
-    /*private ContaPagar[] c2 = new ContaPagar[this.t];
-    while (this.i < this.t) {
-      c2[this.i] = c1[this.i];
-      this.i++;
-    }*/
+    }
     return c1;
   }
   public double Total(int mes, int ano) {
@@ -45,11 +43,13 @@ public class Empresa {
     return this.soma;
   }
   public override string ToString() {
-    return $"Contas: {this.contas}\n" +
-      $"Nome: {this.Nome}\n" +
-      $"Quantidade: {this.Qtd}";
+    return $"  Nome: {this.Nome}\n" +
+      $"  Quantidade contas a pagar: {this.Qtd}";
   } 
 }
+
+// Essa é a resolução da questão 02, que valia 35 pontos:
+
 public class ContaPagar : IComparable {
   public string Fornecedor {get; set;}
   public DateTime Vencimento {get; set;}
@@ -71,6 +71,9 @@ public class ComparadorFornecedor : IComparer {
     return c1.Fornecedor.CompareTo(c2.Fornecedor);
   }
 } 
+
+// Essa é a resolução da questão 03, que valia 30 pontos.
+
 public class Program {
   public static void Main() {
     ContaPagar[] contas = new ContaPagar[4];
@@ -88,13 +91,15 @@ public class Program {
     ContaPagar[] lista1 = e1.Listar();
     ContaPagar[] lista2 = e1.Pesquisar(11, 2022);
     double total = e1.Total(12, 2022);
+
+    Console.WriteLine($"Empresa:\n{e1}\n");
     
-    Console.WriteLine("Listar:\n");
+    Console.WriteLine("Listar:");
     foreach (ContaPagar conta in lista1) {
       Console.WriteLine($"{conta}\n");
     }
 
-    Console.WriteLine("Pesquisar: \n");
+    Console.WriteLine("Pesquisar:");
     foreach (ContaPagar conta in lista2) {
       if (conta != null)
         Console.WriteLine($"{conta}\n");
