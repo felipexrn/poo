@@ -19,6 +19,7 @@ public class Jogador : IComparable{
   }
   public int NumGols {
     set {if (value >= 0) numGols = value;}
+    get {return numGols;}
   }  
   public Jogador() {}
   public Jogador(string n, int c, int g) {
@@ -27,9 +28,9 @@ public class Jogador : IComparable{
     this.NumGols = g;
   }
   public override string ToString() {
-    return $"Nome: {nome}\n" +
-      $"Camisa: {camisa}\n" +
-      $"Numero de gols: {numGols}";
+    return $"  Nome: {nome}\n" +
+      $"  Camisa: {camisa}\n" +
+      $"  Numero de gols: {numGols}";
   }
   public int CompareTo(object obj) {
     Jogador j2 = (Jogador) obj;
@@ -41,19 +42,17 @@ public class Jogador : IComparable{
 
 public class Equipe {
   private string pais;
-  private int max = 22;
   private Jogador[] jogs;
   private int qtd;
   private int i;
-  public Jogador[]
-  public int Max {set{if (value > 0) max = value;}}
+  public Jogador[] Jogs {set{jogs = value;}}
   public string Pais {
     set {if (value != "") pais = value;}
     get {return pais;}
   }
-  public Equipe(string n, int m) {
+  public Equipe(string n, Jogador[] j) {
     this.Pais = n;
-    this.Max = m;
+    this.Jogs = j;
   }
   public void Inserir(Jogador j) {
     jogs[this.qtd] = j;
@@ -62,8 +61,10 @@ public class Equipe {
   public Jogador[] Listar() {
     Jogador[] alfab = new Jogador[this.qtd];
     Array.Sort(jogs);
-    foreach(Jogador j in alfab)
-      j = jogs[this.i];
+    foreach(Jogador j in alfab) {
+      alfab[this.i] = jogs[this.i];
+      this.i++;
+    }
     this.i = 0;
     return jogs;
   }
@@ -71,8 +72,11 @@ public class Equipe {
     Jogador[] artilheiros = new Jogador[3];
     CompArt comparador = new CompArt();
     Array.Sort(jogs, comparador);
-    foreach(Jogador art in artilheiros)
-      art = jogs[this.i];
+    Array.Reverse(jogs);
+    foreach(Jogador art in artilheiros) {
+      artilheiros[this.i] = jogs[this.i];
+      this.i++;
+    }
     this.i = 0;
     return artilheiros;
   }
@@ -80,14 +84,16 @@ public class Equipe {
     Jogador[] camisas = new Jogador[this.qtd];
     CompCam comparador = new CompCam();
     Array.Sort(jogs, comparador);
-    foreach(Jogador cam in camisas)
-      cam = jogs[this.i];
+    foreach(Jogador cam in camisas) {
+      camisas[this.i] = jogs[this.i];
+      this.i++;
+    }
     this.i = 0;
     return camisas;
   }
   public override string ToString() {
-    return $"Pais: {pais}\n" +
-      $"Quantidade de jogadores: {qtd}";
+    return $"  Pais: {pais}\n" +
+      $"  Quantidade de jogadores: {qtd}";
   }
 }
 
@@ -121,16 +127,28 @@ public class Program {
 
     Jogador[] jogadores = new Jogador[4];
 
-    Equipe tabajara = new Equipe("Tabajara", 4);
+    Equipe tabajara = new Equipe("Tabajara", jogadores);
     
     tabajara.Inserir(j1);
     tabajara.Inserir(j2);
     tabajara.Inserir(j3);
     tabajara.Inserir(j4);
     
-    Console.WriteLine(tabajara);
+    Console.WriteLine($"Equipe:\n{tabajara}\n");
 
-    foreach (Jogador jogador in jogadores)
+    Console.WriteLine($"Ordenados:");
+    Jogador[] ordenados = tabajara.Listar();
+    foreach (Jogador jogador in ordenados)
+      Console.WriteLine($"{jogador}\n");
+
+    Console.WriteLine($"Artilheiros:");
+    Jogador[] artilheiros = tabajara.Artilheiros();
+    foreach (Jogador jogador in artilheiros)
+      Console.WriteLine($"{jogador}\n");
+
+    Console.WriteLine($"Camisas:");
+    Jogador[] camisas = tabajara.Camisas();
+    foreach (Jogador jogador in camisas)
       Console.WriteLine($"{jogador}\n");
     
   }
