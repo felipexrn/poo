@@ -3,11 +3,11 @@ class Triangulo {
   private double b = 1, h = 1;
   public double Base {
     get {return b;}
-    set {if (b > 0) b = value;}
+    set {if (value > 0) b = value;}
   }
   public double Altura {
     get {return h;}
-    set {if (h > 0) h = value;}
+    set {if (value > 0) h = value;}
   }
   public double Area {
     get {return b * h / 2;}

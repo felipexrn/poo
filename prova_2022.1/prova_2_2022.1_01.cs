@@ -4,13 +4,12 @@ public class Empresa {
   private ContaPagar[] contas;
   public ContaPagar[] Contas {set {contas = value;}}
   public string Nome {get; set;}
-  private int i = 0;
   private int qtd;
   public int Qtd {get {return qtd;}}
+  private int t, i;
   public void Inserir(ContaPagar conta) {
-    contas[this.i] = conta;
+    contas[this.qtd] = conta;
     qtd++; 
-    i++;
   }
   public ContaPagar[] Listar() {
     ComparadorFornecedor objeto = new ComparadorFornecedor();
@@ -19,9 +18,24 @@ public class Empresa {
     return contas;
   }
   public ContaPagar[] Pesquisar(int mes, int ano) {
-    return contas;
+    ContaPagar[] c1 = new ContaPagar[qtd];
+    this.t = 0;
+    this.i = 0;
+    foreach (ContaPagar conta in contas) {
+      if (conta.Vencimento.Month == mes && conta.Vencimento.Year == ano) {
+        c1[this.t] = conta;
+        this.t++;
+      }
+    }
+    /*private ContaPagar[] c2 = new ContaPagar[this.t];
+    while (this.i < this.t) {
+      c2[this.i] = c1[this.i];
+      this.i++;
+    }*/
+    return c1;
   }
   public double Total(int mes, int ano) {
+    
     return mes + ano;
   }
   public override string ToString() {
@@ -57,14 +71,18 @@ public class Program {
     Empresa e1 = new Empresa {Nome = "Taberna Records", Contas = contas};
     ContaPagar c1 = new ContaPagar {Fornecedor = "Zorzal Produções", Vencimento = DateTime.Parse("2022-12-25"), Valor = 300};
     ContaPagar c2 = new ContaPagar {Fornecedor = "CDH Cast", Vencimento = DateTime.Parse("2022-12-11"), Valor = 600};
-    ContaPagar c3 = new ContaPagar {Fornecedor = "New Blueburry", Vencimento = DateTime.Parse("2022-12-03"), Valor = 39};
-    ContaPagar c4 = new ContaPagar {Fornecedor = "Blueburry", Vencimento = DateTime.Parse("2022-12-03"), Valor = 60};
+    ContaPagar c3 = new ContaPagar {Fornecedor = "New Blueburry", Vencimento = DateTime.Parse("2022-11-03"), Valor = 39};
+    ContaPagar c4 = new ContaPagar {Fornecedor = "Blueburry", Vencimento = DateTime.Parse("2022-11-03"), Valor = 60};
     e1.Inserir(c1);
     e1.Inserir(c2);
     e1.Inserir(c3);
     e1.Inserir(c4);
-    ContaPagar[] lista = e1.Listar();
-    foreach (ContaPagar conta in lista) {
+    ContaPagar[] lista1 = e1.Listar();
+    ContaPagar[] lista2 = e1.Pesquisar(11, 2022);
+    foreach (ContaPagar conta in lista1) {
+      Console.WriteLine($"{conta}\n");
+    }
+    foreach (ContaPagar conta in lista2) {
       Console.WriteLine($"{conta}\n");
     }
     
