@@ -1,7 +1,8 @@
 // Questão 01
 using System;
 using System.Collections;
-namespace Jogador.IO {
+
+namespace Jogador {
   public class Jogador : IComparable{
     private string nome = "Não declarado";
     private int camisa;

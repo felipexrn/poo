@@ -2,9 +2,9 @@
 
 using System;
 using System.Collections;
-using Comparar.Comparar;
-using Equipe.Equipe;
-using Jogador.Jogador;
+using Comparar;
+using Equipe;
+using Jogador;
 
 // Questão 04
 
@@ -14,9 +14,7 @@ public class Program {
     Jogador j1 = new Jogador("Verinha", 9, 3);
     Jogador j2 = new Jogador("", -1, 0);
     Jogador j3 = new Jogador("Dona Dalva", 4, -1);
-    Jogador j4 = new Jogador("Cleuza", 2, 2);
-
-    Jogador[] jogadores = new Jogador[4];
+    Jogador j4 = new Jogador("Cleuza", 2, 2)
 
     Equipe tabajara = new Equipe("Tabajara", jogadores);
     
