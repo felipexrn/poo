@@ -1,6 +1,7 @@
 // Questão 03
 using System;
 using System.Collections;
+using Jogador;
 namespace Comparar {
   public class CompArt : IComparer {
     public int Compare(object obj1, object obj2) {

@@ -14,7 +14,7 @@ public class Program {
     Jogador j1 = new Jogador("Verinha", 9, 3);
     Jogador j2 = new Jogador("", -1, 0);
     Jogador j3 = new Jogador("Dona Dalva", 4, -1);
-    Jogador j4 = new Jogador("Cleuza", 2, 2)
+    Jogador j4 = new Jogador("Cleuza", 2, 2);
 
     Equipe tabajara = new Equipe("Tabajara", jogadores);
     
@@ -39,6 +39,5 @@ public class Program {
     Jogador[] camisas = tabajara.Camisas();
     foreach (Jogador jogador in camisas)
       Console.WriteLine($"{jogador}\n");
-    
   }
 }
