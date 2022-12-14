@@ -42,7 +42,7 @@ public class Jogador : IComparable{
 
 public class Equipe {
   private string pais;
-  private Jogador[] jogs;
+  private Jogador[] jogs = new Jogador[22];
   private int qtd;
   private int i;
   public Jogador[] Jogs {set{jogs = value;}}
@@ -50,9 +50,8 @@ public class Equipe {
     set {if (value != "") pais = value;}
     get {return pais;}
   }
-  public Equipe(string n, Jogador[] j) {
+  public Equipe(string n) {
     this.Pais = n;
-    this.Jogs = j;
   }
   public void Inserir(Jogador j) {
     jogs[this.qtd] = j;
@@ -60,21 +59,19 @@ public class Equipe {
   }
   public Jogador[] Listar() {
     Jogador[] alfab = new Jogador[this.qtd];
-    Array.Sort(jogs);
-    foreach(Jogador j in alfab) {
-      alfab[this.i] = jogs[this.i];
-      this.i++;
-    }
-    this.i = 0;
-    return jogs;
+    Array.Copy(jogs, alfab, this.qtd);
+    Array.Sort(alfab);
+    return alfab;
   }
   public Jogador[] Artilheiros() {
     Jogador[] artilheiros = new Jogador[3];
+    Jogador[] time = new Jogador[this.qtd];
+    Array.Copy(jogs, time, this.qtd);
     CompArt comparador = new CompArt();
-    Array.Sort(jogs, comparador);
-    Array.Reverse(jogs);
+    Array.Sort(time, comparador);
+    Array.Reverse(time);
     foreach(Jogador art in artilheiros) {
-      artilheiros[this.i] = jogs[this.i];
+      artilheiros[this.i] = time[this.i];
       this.i++;
     }
     this.i = 0;
@@ -82,13 +79,9 @@ public class Equipe {
   }
   public Jogador[] Camisas() {
     Jogador[] camisas = new Jogador[this.qtd];
+    Array.Copy(jogs, camisas, this.qtd);
     CompCam comparador = new CompCam();
-    Array.Sort(jogs, comparador);
-    foreach(Jogador cam in camisas) {
-      camisas[this.i] = jogs[this.i];
-      this.i++;
-    }
-    this.i = 0;
+    Array.Sort(camisas, comparador);
     return camisas;
   }
   public override string ToString() {
@@ -125,9 +118,7 @@ public class Program {
     Jogador j3 = new Jogador("Dona Dalva", 4, -1);
     Jogador j4 = new Jogador("Cleuza", 2, 2);
 
-    Jogador[] jogadores = new Jogador[4];
-
-    Equipe tabajara = new Equipe("Tabajara", jogadores);
+    Equipe tabajara = new Equipe("Tabajara");
     
     tabajara.Inserir(j1);
     tabajara.Inserir(j2);
