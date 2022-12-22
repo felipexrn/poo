@@ -1,7 +1,7 @@
 // Questão 02
 using System;
 using System.Collections;
-namespace Equipe {
+namespace Modelo {
   public class Equipe {
     private string pais;
     private Jogador[] jogs = new Jogador[22];
@@ -24,7 +24,7 @@ namespace Equipe {
       Array.Copy(jogs, alfab, this.qtd);
       Array.Sort(alfab);
       return alfab;
-    }
+    } 
     public Jogador[] Artilheiros() {
       Jogador[] artilheiros = new Jogador[3];
       Jogador[] time = new Jogador[this.qtd];
